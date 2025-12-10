@@ -2,11 +2,16 @@
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0" />
+    <meta name="theme-color" content="#3b82f6" />
+    <meta name="mobile-web-app-capable" content="yes">
     <title>NearbySpace | Premium Space Rentals</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Great+Vibes&display=swap" rel="stylesheet">
     <script>
+      // Polyfill process.env to prevent crashes in browser environments
+      window.process = window.process || { env: { NODE_ENV: 'production' } };
+      
       tailwind.config = {
         darkMode: 'class',
         theme: {
@@ -43,7 +48,6 @@
         font-family: 'Inter', sans-serif;
         -webkit-font-smoothing: antialiased;
       }
-      /* Hide scrollbar for clean UI but allow scrolling */
       .no-scrollbar::-webkit-scrollbar {
         display: none;
       }
@@ -62,12 +66,16 @@
     "@google/genai": "https://aistudiocdn.com/@google/genai@^1.32.0",
     "react-dom/": "https://aistudiocdn.com/react-dom@^19.2.1/",
     "framer-motion": "https://aistudiocdn.com/framer-motion@^12.23.26",
-    "@supabase/supabase-js": "https://aistudiocdn.com/@supabase/supabase-js@^2.45.0"
+    "@supabase/supabase-js": "https://aistudiocdn.com/@supabase/supabase-js@^2.45.0",
+    "react-helmet-async": "https://aistudiocdn.com/react-helmet-async@^2.0.4",
+    "vite": "https://esm.sh/vite@^7.2.7",
+    "@vitejs/plugin-react": "https://esm.sh/@vitejs/plugin-react@^5.1.2"
   }
 }
 </script>
 </head>
   <body class="bg-gray-50 text-gray-900 dark:bg-gray-950 dark:text-white transition-colors duration-500">
     <div id="root"></div>
+    <script type="module" src="/index.tsx"></script>
   </body>
 </html>
